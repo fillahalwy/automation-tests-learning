@@ -1,0 +1,26 @@
+{
+  "validPlaceOrder": {
+    "name": "Jhon Doe",
+    "country": "India",
+    "city": "Mumbay",
+    "card": "12345",
+    "month": "10",
+    "year": "2026"
+  },
+  "invalidPlaceOrder": {
+    "name": "abc123!@#",
+    "country": "abc123!@#",
+    "city": "abc123!@#",
+    "card": "abc123!@#",
+    "month": "abc123!@#",
+    "year": "abc123!@#"
+  },
+  "emptyPlaceOrder":{
+    "name": "",
+    "country": "",
+    "city": "",
+    "card": "",
+    "month": "",
+    "year": ""
+  }
+}
