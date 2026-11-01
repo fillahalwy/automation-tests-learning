@@ -116,7 +116,7 @@ async function main() {
   if (notes.length) fields.push({ name: 'Catatan Pipeline', value: notes.join('\n') });
 
   const payload = {
-    username: 'QA Automation',
+    username: 'INPO MINT',
     allowed_mentions: { parse: [] },
     embeds: [
       {
