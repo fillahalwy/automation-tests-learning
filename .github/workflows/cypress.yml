@@ -200,7 +200,7 @@ jobs:
   notify:
     name: "4. Notify Discord"
     runs-on: ubuntu-latest
-    needs: [cypress-test, report, update-gsheet]
+    needs: [cypress-test, report] # [cypress-test, report, update-gsheet] 
     if: always()
 
     steps:
