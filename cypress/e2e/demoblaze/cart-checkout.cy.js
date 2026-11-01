@@ -61,7 +61,7 @@ describe('Demoblaze - Cart & Checkout Automation', () => {
     });
 
     // TC010
-    it('Checkout gagal karena data wajib (Name/Credit card) kosong', () => {
+    it('Checkout gagal karena data wajib (Name/Credit card) tidak valid', () => {
       cartPage.clickPlaceOrder();
       cartPage.fillOrderForm(invalidPlaceOrder.name, invalidPlaceOrder.country, invalidPlaceOrder.city, invalidPlaceOrder.card, invalidPlaceOrder.month, invalidPlaceOrder.year);
       cartPage.clickPurchase();
