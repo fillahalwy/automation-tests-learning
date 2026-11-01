@@ -4,7 +4,7 @@ import CartPage from "../../support/POM/cart.page";
 const productDetail = new ProductDetail();
 const cartPage = new CartPage();
 
-const { validPlaceOrder, invalidPlaceOrder } = require('../../fixtures/placeOrder.json');
+const { validPlaceOrder, invalidPlaceOrder, emptyPlaceOrder } = require('../../fixtures/placeOrder.json');
 
 describe('Demoblaze - Cart & Checkout Automation', () => {
 
@@ -47,7 +47,7 @@ describe('Demoblaze - Cart & Checkout Automation', () => {
   context('Keranjang Berisi Min. 1 Produk', () => {
     beforeEach(() => {
       cy.clearTempData();
-      cy.seedCart(); 
+      cy.seedCart();
     });
 
     // TC001
@@ -63,7 +63,27 @@ describe('Demoblaze - Cart & Checkout Automation', () => {
     // TC010
     it('Checkout gagal karena data wajib (Name/Credit card) tidak valid', () => {
       cartPage.clickPlaceOrder();
-      cartPage.fillOrderForm(invalidPlaceOrder.name, invalidPlaceOrder.country, invalidPlaceOrder.city, invalidPlaceOrder.card, invalidPlaceOrder.month, invalidPlaceOrder.year);
+      cartPage.fillOrderForm(
+        invalidPlaceOrder.name,
+        invalidPlaceOrder.country,
+        invalidPlaceOrder.city,
+        invalidPlaceOrder.card,
+        invalidPlaceOrder.month,
+        invalidPlaceOrder.year);
+      cartPage.clickPurchase();
+      cartPage.verifyAlertMessage('Please fill out Name and Creditcard.');
+    });
+
+    // Data kosong
+    it('Checkout gagal karena data wajib (Name/Credit card) kosong', () => {
+      cartPage.clickPlaceOrder();
+      cartPage.fillOrderForm(
+        validPlaceOrder.name,
+        emptyPlaceOrder.country,
+        emptyPlaceOrder.city,
+        validPlaceOrder.card,
+        emptyPlaceOrder.month,
+        emptyPlaceOrder.year);
       cartPage.clickPurchase();
       cartPage.verifyAlertMessage('Please fill out Name and Creditcard.');
     });
@@ -72,11 +92,11 @@ describe('Demoblaze - Cart & Checkout Automation', () => {
     it('Checkout berhasil dengan semua data valid', () => {
       cartPage.clickPlaceOrder();
       cartPage.fillOrderForm(
-        validPlaceOrder.name, 
-        validPlaceOrder.country, 
-        validPlaceOrder.city, 
-        validPlaceOrder.card, 
-        validPlaceOrder.month, 
+        validPlaceOrder.name,
+        validPlaceOrder.country,
+        validPlaceOrder.city,
+        validPlaceOrder.card,
+        validPlaceOrder.month,
         validPlaceOrder.year
       );
       cartPage.clickPurchase();
