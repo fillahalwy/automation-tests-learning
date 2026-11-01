@@ -10,6 +10,7 @@ module.exports = defineConfig({
 		json: true,
 	},
   e2e: {
+    baseUrl: 'https://www.demoblaze.com', // set default baseUrl but it can be override by .env
     defaultCommandTimeout: 10000,
     viewportHeight: 768,
     viewportWidth: 1024,
